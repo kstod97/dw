@@ -9,7 +9,7 @@ if (strlen($_SESSION['login']) == 0) {
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>Car Rental Portal - My Booking</title>
+    <title>Driveway</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
@@ -23,11 +23,11 @@ if (strlen($_SESSION['login']) == 0) {
     <div class="container">
         <div class="page-header_wrap">
             <div class="page-heading">
-                <h1>My Booking</h1>
+                <h1>Minhas Reservas</h1>
             </div>
             <ul class="coustom-breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li>My Booking</li>
+                <li>Minhas Reservas</li>
             </ul>
         </div>
     </div>
@@ -62,7 +62,7 @@ if (strlen($_SESSION['login']) == 0) {
 
             <div class="col-md-9 col-sm-9">
                 <div class="profile_wrap">
-                    <h5 class="uppercase underline">My Bookings</h5>
+                    <h5 class="uppercase underline">Minhas Reservas</h5>
 
                     <?php
                     $sql_total = "SELECT COUNT(*) FROM tblbooking WHERE userEmail=:useremail AND Status=1";
@@ -98,22 +98,42 @@ if (strlen($_SESSION['login']) == 0) {
                                     // Corrigido aqui
                                     $sql_prev = "SELECT COUNT(*) FROM tblbooking 
                                                  WHERE userEmail = :useremail 
-                                                 AND Status = 1 
-                                                 AND PostingDate < :postingDate";
+                                                 AND Status = 1";                                                  
                                     $query_prev = $dbh->prepare($sql_prev);
-                                    $query_prev->bindParam(':useremail', $useremail, PDO::PARAM_STR);
-                                    $query_prev->bindParam(':postingDate', $booking->PostingDate, PDO::PARAM_STR);
+                                    $query_prev->bindParam(':useremail', $useremail, PDO::PARAM_STR);                                    
                                     $query_prev->execute();
                                     $prevConfirmed = $query_prev->fetchColumn();
 
-                                    $discount = ($prevConfirmed > 0 && $prevConfirmed % 3 == 0) ? 50 : 0;
+                                    $aplicarDesconto = $prevConfirmed % 3;
+
+                                    if($aplicarDesconto == 0){
+                                        $discount = ($prevConfirmed >= 3 && $booking->Status == 0) ? 50 : 0;   
+                                        $sql_update_desconto = "UPDATE tblbooking SET  discountValue = :descontoValor WHERE id = :bookingid";
+                                        $query_update = $dbh->prepare($sql_update_desconto);
+                                        $query_update->bindParam(':descontoValor', $discount, PDO::PARAM_INT);
+                                        $query_update->bindParam(':bookingid', $booking->id, PDO::PARAM_INT);
+                                        $query_update->execute();                                     
+                                    }                                      
+                                  
 
                                     $insurance = ($booking->InsuranceIncluded == 1) ? 150 : 0;
+                                    $sql_update_seguro = "UPDATE tblbooking SET  insuranceValue = :seguroValor WHERE id = :bookingid";
+                                    $query_update = $dbh->prepare($sql_update_seguro);
+                                    $query_update->bindParam(':seguroValor', $insurance, PDO::PARAM_INT);
+                                    $query_update->bindParam(':bookingid', $booking->id, PDO::PARAM_INT);
+                                    $query_update->execute();
+
                                     $total = ($booking->totaldays * $booking->PricePerDay) + $insurance - $discount;
+                                      // Atualiza o TotalPrice no banco
+                                    $sql_update_total = "UPDATE tblbooking SET TotalPrice = :total WHERE id = :bookingid";
+                                    $query_update = $dbh->prepare($sql_update_total);
+                                    $query_update->bindParam(':total', $total, PDO::PARAM_STR);
+                                    $query_update->bindParam(':bookingid', $booking->id, PDO::PARAM_INT);
+                                    $query_update->execute();
                             ?>
 
                             <li>
-                                <h4 style="color:red">Booking No #<?= htmlentities($booking->BookingNumber); ?></h4>
+                                <h4 style="color:red">Reserva N.º #<?= htmlentities($booking->BookingNumber); ?></h4>
                                 <div class="vehicle_img">
                                     <a href="vehical-details.php?vhid=<?= htmlentities($booking->VehicleId); ?>">
                                         <img src="admin/img/vehicleimages/<?= htmlentities($booking->Vimage1); ?>" alt="image">
@@ -122,18 +142,18 @@ if (strlen($_SESSION['login']) == 0) {
                                 <div class="vehicle_title">
                                     <h6><a href="vehical-details.php?vhid=<?= htmlentities($booking->VehicleId); ?>">
                                         <?= htmlentities($booking->BrandName); ?>, <?= htmlentities($booking->VehiclesTitle); ?></a></h6>
-                                    <p><b>From:</b> <?= htmlentities($booking->FromDate); ?> 
-                                       <b>To:</b> <?= htmlentities($booking->ToDate); ?></p>
-                                    <p><b>Message:</b> <?= htmlentities($booking->message); ?></p>
+                                    <p><b>A Partir de:</b> <?= htmlentities($booking->FromDate); ?> 
+                                       <b>Até:</b> <?= htmlentities($booking->ToDate); ?></p>
+                                    <p><b>Mensagem:</b> <?= htmlentities($booking->message); ?></p>
                                 </div>
 
                                 <div class="vehicle_status">
                                     <?php if ($booking->Status == 1) { ?>
-                                        <a href="#" class="btn outline btn-xs active-btn">Confirmed</a>
+                                        <a href="#" class="btn outline btn-xs active-btn">Confirmado</a>
                                     <?php } elseif ($booking->Status == 2) { ?>
-                                        <a href="#" class="btn outline btn-xs">Cancelled</a>
+                                        <a href="#" class="btn outline btn-xs">Cancelado</a>
                                     <?php } else { ?>
-                                        <a href="#" class="btn outline btn-xs">Not Confirmed yet</a>
+                                        <a href="#" class="btn outline btn-xs">Pendente</a>
                                     <?php } ?>
                                 </div>
                             </li>
@@ -149,9 +169,9 @@ if (strlen($_SESSION['login']) == 0) {
                                     <td><?= htmlentities($booking->ToDate); ?></td>
                                     <td><?= htmlentities($booking->totaldays); ?></td>
                                     <td><?= number_format($booking->PricePerDay,2,',','.'); ?></td>
-                                    <td><?= number_format($insurance,2,',','.'); ?></td>
-                                    <td style="color:<?=($discount>0)?'green':'inherit'?>;">
-                                        <?=($discount>0)?'-'.number_format($discount,2,',','.'):'0,00'?>
+                                    <td><?= number_format($booking->insuranceValue,2,',','.'); ?></td>
+                                    <td style="color:<?=($booking->discountValue>0)?'green':'inherit'?>;">
+                                        <?=($booking->discountValue>0)?'-'.number_format($booking->discountValue,2,',','.'):'0,00'?>
                                     </td>
                                     <td><?= number_format($total,2,',','.'); ?></td>
                                 </tr>
@@ -160,7 +180,7 @@ if (strlen($_SESSION['login']) == 0) {
                             <hr>
 
                             <?php } } else { ?>
-                                <h5 align="center" style="color:red">No booking yet</h5>
+                                <h5 align="center" style="color:red">Não Reservado Ainda</h5>
                             <?php } ?>
                         </ul>
                     </div>

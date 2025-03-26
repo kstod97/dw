@@ -34,7 +34,7 @@ $msg="Profile Updated Successfully";
 <html lang="en">
 <head>
 
-<title>Car Rental Portal | My Profile</title>
+<title>Driveway</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <!--Custome Style -->
@@ -96,11 +96,11 @@ $msg="Profile Updated Successfully";
   <div class="container">
     <div class="page-header_wrap">
       <div class="page-heading">
-        <h1>Your Profile</h1>
+        <h1>Seu Perfil</h1>
       </div>
       <ul class="coustom-breadcrumb">
         <li><a href="#">Home</a></li>
-        <li>Profile</li>
+        <li>Perfil</li>
       </ul>
     </div>
   </div>
@@ -140,52 +140,52 @@ foreach($results as $result)
         <?php include('includes/sidebar.php');?>
       <div class="col-md-6 col-sm-8">
         <div class="profile_wrap">
-          <h5 class="uppercase underline">Genral Settings</h5>
+          <h5 class="uppercase underline">Configurações</h5>
           <?php  
-         if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+         if($msg){?><div class="succWrap"><strong>Sucesso</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
           <form  method="post">
            <div class="form-group">
-              <label class="control-label">Reg Date -</label>
+              <label class="control-label">Data de Registro -</label>
              <?php echo htmlentities($result->RegDate);?>
             </div>
              <?php if($result->UpdationDate!=""){?>
             <div class="form-group">
-              <label class="control-label">Last Update at  -</label>
+              <label class="control-label">Última Att  -</label>
              <?php echo htmlentities($result->UpdationDate);?>
             </div>
             <?php } ?>
             <div class="form-group">
-              <label class="control-label">Full Name</label>
+              <label class="control-label">Nome Completo</label>
               <input class="form-control white_bg" name="fullname" value="<?php echo htmlentities($result->FullName);?>" id="fullname" type="text"  required>
             </div>
             <div class="form-group">
-              <label class="control-label">Email Address</label>
+              <label class="control-label">Email</label>
               <input class="form-control white_bg" value="<?php echo htmlentities($result->EmailId);?>" name="emailid" id="email" type="email" required readonly>
             </div>
             <div class="form-group">
-              <label class="control-label">Phone Number</label>
+              <label class="control-label">Telefone</label>
               <input class="form-control white_bg" name="mobilenumber" value="<?php echo htmlentities($result->ContactNo);?>" id="phone-number" type="text" required>
             </div>
             <div class="form-group">
-              <label class="control-label">Date of Birth&nbsp;(dd/mm/yyyy)</label>
+              <label class="control-label">Data de Nascimento&nbsp;(dd/mm/yyyy)</label>
               <input class="form-control white_bg" value="<?php echo htmlentities($result->dob);?>" name="dob" placeholder="dd/mm/yyyy" id="birth-date" type="text" >
             </div>
             <div class="form-group">
-              <label class="control-label">Your Address</label>
+              <label class="control-label">Endereço</label>
               <textarea class="form-control white_bg" name="address" rows="4" ><?php echo htmlentities($result->Address);?></textarea>
             </div>
             <div class="form-group">
-              <label class="control-label">Country</label>
+              <label class="control-label">País</label>
               <input class="form-control white_bg"  id="country" name="country" value="<?php echo htmlentities($result->City);?>" type="text">
             </div>
             <div class="form-group">
-              <label class="control-label">City</label>
+              <label class="control-label">Cidade</label>
               <input class="form-control white_bg" id="city" name="city" value="<?php echo htmlentities($result->City);?>" type="text">
             </div>
             <?php }} ?>
            
             <div class="form-group">
-              <button type="submit" name="updateprofile" class="btn">Save Changes <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+              <button type="submit" name="updateprofile" class="btn">Salvar <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
             </div>
           </form>
         </div>
