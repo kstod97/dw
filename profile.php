@@ -26,7 +26,7 @@ $query->bindParam(':city',$city,PDO::PARAM_STR);
 $query->bindParam(':country',$country,PDO::PARAM_STR);
 $query->bindParam(':email',$email,PDO::PARAM_STR);
 $query->execute();
-$msg="Profile Updated Successfully";
+$msg="Perfil atualizado com sucesso!";
 }
 
 ?>

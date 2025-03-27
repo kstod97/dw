@@ -38,7 +38,7 @@ $error="Your current password is wrong";
 <html lang="en">
 <head>
 
-<title>Car Rental Portal - Update Password</title>
+<title>Driveway</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <!--Custome Style -->
@@ -75,7 +75,7 @@ function valid()
 {
 if(document.chngpwd.newpassword.value!= document.chngpwd.confirmpassword.value)
 {
-alert("New Password and Confirm Password Field do not match  !!");
+alert("Senha e senha de confirmação não compativeis  !!");
 document.chngpwd.confirmpassword.focus();
 return false;
 }
@@ -115,11 +115,11 @@ return true;
   <div class="container">
     <div class="page-header_wrap">
       <div class="page-heading">
-        <h1>Update Password</h1>
+        <h1>Mudar Senha</h1>
       </div>
       <ul class="coustom-breadcrumb">
         <li><a href="#">Home</a></li>
-        <li>Update Password</li>
+        <li>Mudar Senha</li>
       </ul>
     </div>
   </div>
@@ -160,21 +160,21 @@ foreach($results as $result)
 <form name="chngpwd" method="post" onSubmit="return valid();">
         
             <div class="gray-bg field-title">
-              <h6>Update password</h6>
+              <h6>Mudar Senha</h6>
             </div>
              <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-        else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+        else if($msg){?><div class="succWrap"><strong>SUCCESSO</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
             <div class="form-group">
-              <label class="control-label">Current Password</label>
+              <label class="control-label">Senha Atual</label>
               <input class="form-control white_bg" id="password" name="password"  type="password" required>
             </div>
             <div cl
             <div class="form-group">
-              <label class="control-label">Password</label>
+              <label class="control-label">Senha</label>
               <input class="form-control white_bg" id="newpassword" type="password" name="newpassword" required>
             </div>
             <div class="form-group">
-              <label class="control-label">Confirm Password</label>
+              <label class="control-label">Confirmar Senha</label>
               <input class="form-control white_bg" id="confirmpassword" type="password" name="confirmpassword"  required>
             </div>
           

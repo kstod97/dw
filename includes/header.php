@@ -90,7 +90,7 @@
               <ul class="dropdown-menu">
                 <?php if (!empty($_SESSION['login'])) { ?>
                   <li><a href="profile.php">Perfil</a></li>
-                  <li><a href="update-password.php">Atualize a senha</a></li>
+                  <li><a href="update-password.php">Mudar senha</a></li>
                   <li><a href="my-booking.php">Minhas Reservas</a></li>
                   <li><a href="post-testimonial.php">Avaliações</a></li>
                   <li><a href="my-testimonials.php">Minhas Avaliações</a></li>

@@ -9,7 +9,7 @@ error_reporting(0);
 <html lang="en">
 <head>
 
-<title>Car Rental Portal</title>
+<title>Driveway</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
@@ -65,7 +65,7 @@ error_reporting(0);
   <div class="container">
     <div class="section-header text-center">
       <h2>Encontre o Melhor <span>Carro para Você</span></h2>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+      <p>Use os filtros e descubra veículos que combinam com seu estilo, necessidades e orçamento.</p>
     </div>
     <div class="row"> 
       
@@ -95,13 +95,13 @@ foreach($results as $result)
 <div class="car-info-box"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1);?>" class="img-responsive" alt="image"></a>
 <ul>
 <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType);?></li>
-<li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear);?> Model</li>
-<li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity);?> seats</li>
+<li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear);?> Modelo</li>
+<li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity);?> Assentos</li>
 </ul>
 </div>
 <div class="car-title-m">
 <h6><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"> <?php echo htmlentities($result->VehiclesTitle);?></a></h6>
-<span class="price">$<?php echo htmlentities($result->PricePerDay);?> /Day</span> 
+<span class="price">$<?php echo htmlentities($result->PricePerDay);?> Diário</span> 
 </div>
 <div class="inventory_info_m">
 <p><?php echo substr($result->VehiclesOverview,0,70);?></p>
@@ -120,19 +120,12 @@ foreach($results as $result)
 <section class="fun-facts-section">
   <div class="container div_zindex">
     <div class="row">
-      <div class="col-lg-3 col-xs-6 col-sm-3">
-        <div class="fun-facts-m">
-          <div class="cell">
-            <h2><i class="fa fa-calendar" aria-hidden="true"></i>40+</h2>
-            <p>Years In Business</p>
-          </div>
-        </div>
-      </div>
+    
       <div class="col-lg-3 col-xs-6 col-sm-3">
         <div class="fun-facts-m">
           <div class="cell">
             <h2><i class="fa fa-car" aria-hidden="true"></i>1200+</h2>
-            <p>New Cars For Sale</p>
+            <p>Novos Carros Disponiveis!</p>
           </div>
         </div>
       </div>
@@ -140,7 +133,7 @@ foreach($results as $result)
         <div class="fun-facts-m">
           <div class="cell">
             <h2><i class="fa fa-car" aria-hidden="true"></i>1000+</h2>
-            <p>Used Cars For Sale</p>
+            <p>Carros Alugados</p>
           </div>
         </div>
       </div>
@@ -148,7 +141,7 @@ foreach($results as $result)
         <div class="fun-facts-m">
           <div class="cell">
             <h2><i class="fa fa-user-circle-o" aria-hidden="true"></i>600+</h2>
-            <p>Satisfied Customers</p>
+            <p>Clientes Satisfeitos</p>
           </div>
         </div>
       </div>
@@ -164,7 +157,7 @@ foreach($results as $result)
 <section class="section-padding testimonial-section parallex-bg">
   <div class="container div_zindex">
     <div class="section-header white-text text-center">
-      <h2>Our Satisfied <span>Customers</span></h2>
+      <h2>Nossos Clientes <span>Satisfeitos</span></h2>
     </div>
     <div class="row">
       <div id="testimonial-slider">
