@@ -33,7 +33,7 @@ $error="Something went wrong. Please try again";
 <html lang="en">
 <head>
 
-<title>Car Rental Portal |Post testimonial</title>
+<title>Driveway</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <!--Custome Style -->
@@ -95,11 +95,11 @@ $error="Something went wrong. Please try again";
   <div class="container">
     <div class="page-header_wrap">
       <div class="page-heading">
-        <h1>Post Testimonial</h1>
+        <h1>Postar Avaliação</h1>
       </div>
       <ul class="coustom-breadcrumb">
         <li><a href="#">Home</a></li>
-        <li>Post Testimonial</li>
+        <li>Postar Avaliação</li>
       </ul>
     </div>
   </div>
@@ -138,20 +138,20 @@ foreach($results as $result)
         <?php include('includes/sidebar.php');?>
       <div class="col-md-6 col-sm-8">
         <div class="profile_wrap">
-          <h5 class="uppercase underline">Post a Testimonial</h5>
+          <h5 class="uppercase underline">Poste uma Avaliação</h5>
             <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-        else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+        else if($msg){?><div class="succWrap"><strong>SUCCESSO</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
           <form  method="post">
           
           
             <div class="form-group">
-              <label class="control-label">Testimonail</label>
+              <label class="control-label">Avaliação</label>
               <textarea class="form-control white_bg" name="testimonial" rows="4" required=""></textarea>
             </div>
           
            
             <div class="form-group">
-              <button type="submit" name="submit" class="btn">Save  <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+              <button type="submit" name="submit" class="btn">Postar <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
             </div>
           </form>
         </div>

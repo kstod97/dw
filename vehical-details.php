@@ -27,7 +27,8 @@ if (isset($_POST['submit'])) {
 
   // Se o seguro estiver selecionado, adicionar 150 ao valor da diária
   if ($seguro) {
-    $pricePerDay += ($pricePerDay + 150);
+    $pricePerDay = ($pricePerDay + 150);
+    $seguroValor = 150; // Valor do seguro
   }
 
   // Calcula o número de dias entre as datas
@@ -38,6 +39,7 @@ if (isset($_POST['submit'])) {
 
   // Valor total da reserva
   $totalPrice = $pricePerDay * $days;
+  $seguroValor = $seguroValor * $days; // Valor total do seguro
 
   // Verifica conflito de datas
   $ret = "SELECT * FROM tblbooking WHERE (:fromdate BETWEEN date(FromDate) and date(ToDate) 

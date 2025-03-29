@@ -13,7 +13,7 @@ else{
 <html lang="en">
 <head>
 
-<title>Car Rental Portal | My Testimonials </title>
+<title>Driveway</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <!--Custome Style -->
@@ -57,11 +57,11 @@ else{
   <div class="container">
     <div class="page-header_wrap">
       <div class="page-heading">
-        <h1>My Testimonials</h1>
+        <h1>Minhas Avaliações </h1>
       </div>
       <ul class="coustom-breadcrumb">
         <li><a href="#">Home</a></li>
-        <li>My Testimonials</li>
+        <li>Minhas Avaliações</li>
       </ul>
     </div>
   </div>
@@ -103,7 +103,7 @@ foreach($results as $result)
 
 
         <div class="profile_wrap">
-          <h5 class="uppercase underline">My Testimonials </h5>
+          <h5 class="uppercase underline">Minhas Avaliações </h5>
           <div class="my_vehicles_list">
             <ul class="vehicle_listing">
 <?php 
@@ -126,12 +126,12 @@ foreach($results as $result)
                    <p><b>Posting Date:</b><?php echo htmlentities($result->PostingDate);?> </p>
                 </div>
                 <?php if($result->status==1){ ?>
-                 <div class="vehicle_status"> <a class="btn outline btn-xs active-btn">Active</a>
+                 <div class="vehicle_status"> <a class="btn outline btn-xs active-btn">Postado</a>
 
                   <div class="clearfix"></div>
                   </div>
                   <?php } else {?>
-               <div class="vehicle_status"> <a href="#" class="btn outline btn-xs">Waiting for approval</a>
+               <div class="vehicle_status"> <a href="#" class="btn outline btn-xs">Esperando Aprovação</a>
                   <div class="clearfix"></div>
                   </div>
                   <?php } ?>
