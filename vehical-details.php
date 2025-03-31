@@ -43,8 +43,8 @@ if (isset($_POST['submit'])) {
 
   // Verifica conflito de datas
   $ret = "SELECT * FROM tblbooking WHERE (:fromdate BETWEEN date(FromDate) and date(ToDate) 
-        OR :todate BETWEEN date(FromDate) and date(ToDate) 
-        OR date(FromDate) BETWEEN :fromdate and :todate) AND VehicleId=:vhid";
+    OR :todate BETWEEN date(FromDate) and date(ToDate) 
+    OR date(FromDate) BETWEEN :fromdate and :todate) AND VehicleId=:vhid";
   $query1 = $dbh->prepare($ret);
   $query1->bindParam(':vhid', $vhid, PDO::PARAM_STR);
   $query1->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
   if ($query1->rowCount() == 0) {
     // Insere os dados da reserva no banco com seguro e valor total
     $sql = "INSERT INTO tblbooking(userEmail, VehicleId, FromDate, ToDate, message, Status, InsuranceIncluded, discountValue,insuranceValue,TotalPrice) 
-            VALUES(:useremail, :vhid, :fromdate, :todate, :message, :status, :seguro, :discontoValor, :seguroValor, :totalPrice)";
+      VALUES(:useremail, :vhid, :fromdate, :todate, :message, :status, :seguro, :discontoValor, :seguroValor, :totalPrice)";
     $query = $dbh->prepare($sql);
     $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
     $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
@@ -66,7 +66,6 @@ if (isset($_POST['submit'])) {
     $query->bindParam(':discontoValor', $descontoValor, PDO::PARAM_STR);
     $query->bindParam(':seguroValor', $seguroValor, PDO::PARAM_STR);
     $query->bindParam(':totalPrice', $totalPrice, PDO::PARAM_STR);
-    
 
     if ($query->execute()) {
       echo "<script>alert('Reserva realizada com sucesso!');</script>";
@@ -80,7 +79,6 @@ if (isset($_POST['submit'])) {
     echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
   }
 }
-
 ?>
 
 <!DOCTYPE HTML>
@@ -133,9 +131,9 @@ if (isset($_POST['submit'])) {
   <?php
   $vhid = intval($_GET['vhid']);
   $sql = "SELECT tblvehicles.*, tblbrands.BrandName, tblbrands.id as bid  
-        FROM tblvehicles 
-        JOIN tblbrands ON tblbrands.id = tblvehicles.VehiclesBrand 
-        WHERE tblvehicles.id = :vhid";
+    FROM tblvehicles 
+    JOIN tblbrands ON tblbrands.id = tblvehicles.VehiclesBrand 
+    WHERE tblvehicles.id = :vhid";
   $query = $dbh->prepare($sql);
   $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
   $query->execute();
@@ -146,12 +144,14 @@ if (isset($_POST['submit'])) {
       $_SESSION['brndid'] = $result->bid;
   ?>
 
-      <section id="listing_img_slider">
-        <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-        <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage2); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-        <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage3); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-        <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage4); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-        <?php
+        <section id="listing_img_slider">
+          <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+          <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage2); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+          <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage3); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+          <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage4); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+          <?php
+          if ($result->Vimage5 != "") {
+          ?>
         if ($result->Vimage5 != "") {
         ?>
           <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
@@ -338,31 +338,211 @@ if (isset($_POST['submit'])) {
                 <div class="widget_heading">
                   <h5><i class="fa fa-envelope" aria-hidden="true"></i>Reserve Já</h5>
                 </div>
-                <form method="post">
+
+                <form method="post" id="formReserva">
                   <div class="form-group">
                     <label>A Partir de:</label>
-                    <input type="date" class="form-control" name="fromdate" placeholder="From Date" required>
+                    <input type="date" class="form-control" id="fromdate" name="fromdate" placeholder="From Date" required>
                   </div>
                   <div class="form-group">
                     <label>Até:</label>
-                    <input type="date" class="form-control" name="todate" placeholder="To Date" required>
+                    <input type="date" class="form-control" id="todate" name="todate" placeholder="To Date" required>
                   </div>
                   <div class="form-group">
-                    <textarea rows="4" class="form-control" name="message" placeholder="Message" required></textarea>
-                  </div>
-                  <!-- Check button para Seguro -->
-                  <div class="form-group">
-                    <input type="checkbox" id="seguro" name="seguro" value="1">
-                    <label for="seguro" data-toggle="tooltip" title="Viaje tranquilo com nosso seguro completo por apenas $150 na sua diária!"> Seguro</label>
-                  </div>
+                    <textarea rows="4" class="form-control" id="message" name="message" placeholder="Message" required></textarea>
+                  </div>                  
+                  <!-- Check button para Seguro -->          
                   <?php if (isset($_SESSION['login']) && $_SESSION['login']) { ?>
-                    <div class="form-group">
-                      <input type="submit" class="btn" name="submit" value="Reserve">
+                    <div class="form-group">                     
+                      <div class="form-group">
+                        <button class="btn btnReserva" onclick="event.preventDefault();">Reservar</button>
+                        <p class="mensagemErro"><strong>Preencha todos os campos, sendo obrigatórios os campos data e mensagem.</strong></p>
+
+                        <div id="modalConfirma checkoutModal" class="modalConfirma" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"></button>
+                          <h4 class="modal-title">Confirme sua Reserva</h4>
+                        </div>
+
+                        <div class="modal-body">
+
+                    <p id="resumoReserva"></p>
+
+                 
+                    <h5>Adicione o Seguro</h5>
+                    <div class="checkbox">                 
+                    <input type="radio" id="checkbox" name="seguro" value="0" onclick="abrirCheckout();">
+                        Quero adicionar seguro completo por <strong>R$150 (taxa única)</strong>                      
+                     
+                      <a href="#" onclick="abrirTermosSeguro(); return false;" style="margin-left:10px;">Termos</a>
+
+                      <h4 style="margin-top:20px;">Total: R$ <span id="valorTotalReserva"></span></h4>
                     </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" name="submit"  class="btn btnConfirmaReserva" >Confirmar Reserva</button>
+                  </div>                          
+                        </div>
+                        </div>
+                        </div>
+
+                        <style>
+                          .modalConfirma {
+                            display: none;
+                            position: fixed;
+                            z-index: 1;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            overflow: auto;
+                            background-color: rgba(0, 0, 0, 0.4);
+                          }
+
+                          .mensagemErro {
+                            display: none;
+                            margin-bottom: 10px;
+                          }
+
+                          .mensagemErro.active{
+                            display: flex;
+                            color: red;
+                            margin-bottom: 10px;
+                          }
+
+                          .modalConfirma.active {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                        </style>
+
+                        <script>
+                        function abrirCheckout() {
+                          var fromdate = $('#fromdate').val();
+                          var todate = $('#todate').val();
+                          var seguro = $('#checkbox').is(':checked') ? 1 : 0;    
+                          
+                          var start = new Date(fromdate);
+                            var end = new Date(todate);
+                            var dias = ((end - start) / (1000 * 60 * 60 * 24)) + 1; 
+
+                            var precoDiaria = <?= $result->PricePerDay; ?>;                            
+                            var valorSeguro = seguro ? 150 : 0;                            
+
+                            var total = (precoDiaria + valorSeguro) * dias;                         
+   
+                          if (valorSeguro > 0) {                            
+                            var resultadoSeguro = 'Sim (+ R$150 taxa diaria)';
+                            $('#checkoutModal').modal('show');                
+                          } else {
+                            var resultadoSeguro = 'Não';
+                          }
+
+                          $('#resumoReserva').html(`
+                            <strong>De:</strong> ${fromdate}<br>
+                            <strong>Até:</strong> ${todate}<br>
+                            <strong>Dias:</strong> ${dias}<br> 
+                            <strong>Preço Diario:</strong> ${precoDiaria}<br>                               
+                            <strong>Seguro:</strong> ${resultadoSeguro}<br>
+                          `);
+
+                          $('#valorTotalReserva').text(total.toFixed(2));
+                        }
+
+                        function abrirTermosSeguro() {
+                        var termos = window.open('', 'Termos do Seguro', 'width=600,height=600');
+                        termos.document.write(`
+                          <html>
+                            <head>
+                              <title>Termos do Seguro</title>
+                              <style>
+                                body{font-family:Arial;padding:15px;}
+                                h3,h4,h5{margin-bottom:10px;}
+                                ul{margin-top:5px;}
+                              </style>
+                            </head>
+                            <body>
+                              <h3>Termos do Seguro - Programa de Aluguel de Veículos</h3>
+                              <h4>1. Cobertura do Seguro</h4>
+                              <p>O seguro oferecido cobre exclusivamente os veículos alugados através deste programa contra danos decorrentes de colisões, incêndios, roubo e furto qualificado, desde que observadas as condições e exclusões previstas nestes termos.</p>
+                              <h4>2. Responsabilidade do Cliente</h4>
+                              <p>O cliente se compromete a utilizar o veículo conforme as condições previstas no contrato de aluguel, observando a legislação de trânsito vigente. Qualquer uso indevido poderá resultar na exclusão da cobertura securitária.</p>
+                              <h4>3. Franquia</h4>
+                              <p>Em caso de sinistro, será cobrado do cliente o valor da franquia correspondente a 10% do valor dos danos causados ao veículo, limitado ao valor máximo de R$ 2.500,00 por incidente.</p>
+                              <h4>4. Exclusões do Seguro</h4>
+                              <ul>
+                                <li>Multas ou infrações de trânsito;</li>
+                                <li>Danos provocados por negligência ou má-fé;</li>
+                                <li>Uso do veículo para práticas ilícitas;</li>
+                                <li>Condução do veículo por pessoas não autorizadas ou fora das condições estabelecidas no contrato;</li>
+                                <li>Danos a acessórios pessoais ou bens deixados no interior do veículo.</li>
+                              </ul>
+                              <h4>5. Procedimento em Caso de Sinistro</h4>
+                              <p>Em caso de acidente ou furto/roubo, o cliente deverá imediatamente:</p>
+                              <ul>
+                                <li>Comunicar à autoridade policial competente e registrar boletim de ocorrência;</li>
+                                <li>Informar imediatamente o ocorrido ao serviço de atendimento do programa de aluguel;</li>
+                                <li>Preencher o formulário de comunicação de sinistro disponibilizado pelo programa, fornecendo informações precisas e completas sobre o incidente.</li>
+                              </ul>
+                              <h4>6. Vigência e Validade</h4>
+                              <p>A vigência da cobertura securitária coincide estritamente com o período de locação estabelecido no contrato de aluguel.</p>
+                              <h4>7. Indenização</h4>
+                              <p>O pagamento da indenização pelo seguro estará sujeito à avaliação e aprovação prévia da empresa responsável pelo programa de aluguel, mediante comprovação dos fatos relatados.</p>
+                              <p><strong>Ao aceitar o contrato de aluguel, o cliente reconhece estar ciente e concordar integralmente com estes termos do seguro.</strong></p>
+                            </body>
+                          </html>
+                        `);
+                      }
+
+
+                          //refrenciar elementos
+                          const btnReserva = document.querySelector('.btnReserva');
+                          const modalConfirma = document.querySelector('.modalConfirma');
+                          const fechaModal = document.querySelector('.btn-default');
+                          const checkbox = document.querySelector('#checkbox');
+                          const btnConfirmaReserva = document.querySelector('.btnConfirmaReserva');
+                          const mensagemErro = document.querySelector('.mensagemErro');
+
+                          //exibir modal
+                          btnReserva.addEventListener('click', () => {
+                            var fromdate = $('#fromdate').val();
+                            var todate = $('#todate').val();
+                            var message = $('#message').val();
+
+                            if(fromdate && todate && message){
+                              mensagemErro.classList.remove('active');
+                              modalConfirma.classList.add('active'); 
+                              abrirCheckout();                              
+                            }else{
+                              mensagemErro.classList.add('active');                           
+                            }
+                             
+                          }); 
+
+                          //atualizar valor do seguro
+                          checkbox.addEventListener('change', () => {                           
+                            checkbox.value = checkbox.checked ? 1 : 0;
+                          });
+
+                          //fechar modal
+                          fechaModal.addEventListener('click', () => {
+                            modalConfirma.classList.remove('active');
+                          });
+
+                          //enviar formulário
+                            btnConfirmaReserva.addEventListener('click', () => {
+                            document.querySelector('#formReserva').submit();
+                            });
+                        </script>
+                      </div>
+                    </div>                              
+                    
                   <?php } else { ?>
                     <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login For Book</a>
                   <?php } ?>
-
                 </form>
               </div>
             </aside>
