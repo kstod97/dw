@@ -92,7 +92,7 @@ $error="Something went wrong. Please try again";
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	
-	<title>DriveGo</title>
+	<title>Car Rental Portal | Admin Post Vehicle</title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -141,26 +141,26 @@ $error="Something went wrong. Please try again";
 				<div class="row">
 					<div class="col-md-12">
 					
-						<h2 class="page-title">Postar um Veículo</h2>
+						<h2 class="page-title">Post A Vehicle</h2>
 
 						<div class="row">
 							<div class="col-md-12">
 								<div class="panel panel-default">
-									<div class="panel-heading">Informação Básica</div>
-<?php if($error){?><div class="errorWrap"><strong>ERRO</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-				else if($msg){?><div class="succWrap"><strong>SUCCESSO</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+									<div class="panel-heading">Basic Info</div>
+<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
+				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
 
 									<div class="panel-body">
 <form method="post" class="form-horizontal" enctype="multipart/form-data">
 <div class="form-group">
-<label class="col-sm-2 control-label">Título do Veículo<span style="color:red">*</span></label>
+<label class="col-sm-2 control-label">Vehicle Title<span style="color:red">*</span></label>
 <div class="col-sm-4">
 <input type="text" name="vehicletitle" class="form-control" required>
 </div>
-<label class="col-sm-2 control-label">Selecione Marca<span style="color:red">*</span></label>
+<label class="col-sm-2 control-label">Select Brand<span style="color:red">*</span></label>
 <div class="col-sm-4">
 <select class="selectpicker" name="brandname" required>
-<option value=""> Selecionar </option>
+<option value=""> Select </option>
 <?php $ret="select id,BrandName from tblbrands";
 $query= $dbh -> prepare($ret);
 //$query->bindParam(':id',$id, PDO::PARAM_STR);
@@ -198,7 +198,7 @@ foreach($results as $result)
 
 <option value="Gasolina">Gasolina</option>
 <option value="Diesel">Diesel</option>
-<option value="Álcool">Álcool</option>
+<option value="Alcool">Álcool</option>
 </select>
 </div>
 </div>
