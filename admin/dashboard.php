@@ -19,7 +19,7 @@ else{
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	
-	<title>Car Rental Portal | Admin Dashboard</title>
+	<title>DriveGo</title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -50,7 +50,7 @@ else{
 				<div class="row">
 					<div class="col-md-12">
 
-						<h2 class="page-title">Dashboard</h2>
+						<h2 class="page-title">Painel</h2>
 						
 						<div class="row">
 							<div class="col-md-12">
@@ -67,10 +67,10 @@ $results=$query->fetchAll(PDO::FETCH_OBJ);
 $regusers=$query->rowCount();
 ?>
 													<div class="stat-panel-number h1 "><?php echo htmlentities($regusers);?></div>
-													<div class="stat-panel-title text-uppercase">Reg Users</div>
+													<div class="stat-panel-title text-uppercase">Resgistro de Usuários</div>
 												</div>
 											</div>
-											<a href="reg-users.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+											<a href="reg-users.php" class="block-anchor panel-footer">Detalhe Completo <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
@@ -85,10 +85,10 @@ $results1=$query1->fetchAll(PDO::FETCH_OBJ);
 $totalvehicle=$query1->rowCount();
 ?>
 													<div class="stat-panel-number h1 "><?php echo htmlentities($totalvehicle);?></div>
-													<div class="stat-panel-title text-uppercase">Listed Vehicles</div>
+													<div class="stat-panel-title text-uppercase">Veículos Listados</div>
 												</div>
 											</div>
-											<a href="manage-vehicles.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="manage-vehicles.php" class="block-anchor panel-footer text-center">Detalhe Completo &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
@@ -104,10 +104,10 @@ $bookings=$query2->rowCount();
 ?>
 
 													<div class="stat-panel-number h1 "><?php echo htmlentities($bookings);?></div>
-													<div class="stat-panel-title text-uppercase">Total Bookings</div>
+													<div class="stat-panel-title text-uppercase">Total de Reservas</div>
 												</div>
 											</div>
-											<a href="confirmed-bookings.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="confirmed-bookings.php" class="block-anchor panel-footer text-center">Detalhe Completo &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
@@ -122,10 +122,10 @@ $results3=$query3->fetchAll(PDO::FETCH_OBJ);
 $brands=$query3->rowCount();
 ?>												
 													<div class="stat-panel-number h1 "><?php echo htmlentities($brands);?></div>
-													<div class="stat-panel-title text-uppercase">Listed Brands</div>
+													<div class="stat-panel-title text-uppercase">Marcas Listadas </div>
 												</div>
 											</div>
-											<a href="manage-brands.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="manage-brands.php" class="block-anchor panel-footer text-center">Detalhe Completo &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -155,10 +155,10 @@ $results4=$query4->fetchAll(PDO::FETCH_OBJ);
 $subscribers=$query4->rowCount();
 ?>
 													<div class="stat-panel-number h1 "><?php echo htmlentities($subscribers);?></div>
-													<div class="stat-panel-title text-uppercase">Subscibers</div>
+													<div class="stat-panel-title text-uppercase">Assinantes</div>
 												</div>
 											</div>
-											<a href="manage-subscribers.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+											<a href="manage-subscribers.php" class="block-anchor panel-footer">Detalhe Completo <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
@@ -173,10 +173,10 @@ $results6=$query6->fetchAll(PDO::FETCH_OBJ);
 $query=$query6->rowCount();
 ?>
 													<div class="stat-panel-number h1 "><?php echo htmlentities($query);?></div>
-													<div class="stat-panel-title text-uppercase">Queries</div>
+													<div class="stat-panel-title text-uppercase">Consultas</div>
 												</div>
 											</div>
-											<a href="manage-conactusquery.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="manage-conactusquery.php" class="block-anchor panel-footer text-center">Detalhe Completo &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
@@ -192,10 +192,10 @@ $testimonials=$query5->rowCount();
 ?>
 
 													<div class="stat-panel-number h1 "><?php echo htmlentities($testimonials);?></div>
-													<div class="stat-panel-title text-uppercase">Testimonials</div>
+													<div class="stat-panel-title text-uppercase">Testemunhos</div>
 												</div>
 											</div>
-											<a href="testimonials.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="testimonials.php" class="block-anchor panel-footer text-center">Detalhe Completo &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 								

@@ -9,7 +9,7 @@ error_reporting(0);
 
 <head>
 
-  <title>Driveway</title>
+  <title>DriveGo</title>
   <!--Bootstrap -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
   <!--Custome Style -->
@@ -26,9 +26,9 @@ error_reporting(0);
 
   <!-- SWITCHER -->
   <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
-  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
+  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all"  />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
-  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
+  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" data-default-color="true" />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
@@ -38,14 +38,14 @@ error_reporting(0);
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
   <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
+  <link rel="shortcut icon" href="assets/images/icon7.png">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 </head>
 
 <body>
 
   <!-- Start Switcher -->
-  <?php include('includes/colorswitcher.php'); ?>
+  <!-- ?php include('includes/colorswitcher.php'); ? -->
   <!-- /Switcher -->
 
   <!--Header-->
@@ -156,7 +156,7 @@ error_reporting(0);
                       <?php echo htmlentities($result->BrandName); ?> , <?php echo htmlentities($result->VehiclesTitle); ?>
                     </a>
                   </h5>
-                  <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Diárias</p>
+                  <p class="list-price">R$<?php echo htmlentities($result->PricePerDay); ?> Diárias</p>
                   <ul>
                     <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?> Lugares</li>
                     <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> Modelo</li>
@@ -214,9 +214,10 @@ error_reporting(0);
                 <div class="form-group select">
                   <select class="form-control" name="fueltype">
                     <option value="">Selecione Combustivel</option>
-                    <option value="Petrol" <?= ($selectedFuel == 'Petrol') ? 'selected' : '' ?>>Gasolina</option>
+                    <option value="Gasolina" <?= ($selectedFuel == 'Gasolina') ? 'selected' : '' ?>>Gasolina</option>
                     <option value="Diesel" <?= ($selectedFuel == 'Diesel') ? 'selected' : '' ?>>Diesel</option>
-                    <option value="CNG" <?= ($selectedFuel == 'CNG') ? 'selected' : '' ?>>CNG</option>
+                    <!--option value="CNG" <?= ($selectedFuel == 'CNG') ? 'selected' : '' ?>>CNG</option -->
+                    <option value="Alcool" <?= ($selectedFuel == 'Alcool') ? 'selected' : '' ?>>Álcool</option>
                   </select>
                 </div>
 
@@ -265,7 +266,7 @@ error_reporting(0);
                         <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>">
                           <?php echo htmlentities($result->BrandName); ?> , <?php echo htmlentities($result->VehiclesTitle); ?>
                         </a>
-                        <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Diária</p>
+                        <p class="widget_price">R$<?php echo htmlentities($result->PricePerDay); ?> Diária</p>
                       </div>
                     </li>
                 <?php

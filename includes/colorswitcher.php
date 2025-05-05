@@ -1,4 +1,4 @@
-<div class="switcher-wrapper">	
+<!-- <div class="switcher-wrapper">	
     <div class="demo_changer">
         <div class="demo-icon customBgColor"><i class="fa fa-cog fa-spin fa-2x"></i></div>
         <div class="form_holder">
@@ -19,4 +19,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

@@ -11,7 +11,7 @@ if (strlen($_SESSION['login']) == 0) {
 
     <head>
 
-        <title>Driveway</title>
+        <title>DriveGo</title>
         <!--Bootstrap -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
         <!--Custome Style -->
@@ -38,7 +38,7 @@ if (strlen($_SESSION['login']) == 0) {
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-        <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
+        <link rel="shortcut icon" href="assets/images/icon7.png">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     </head>
 
@@ -46,7 +46,7 @@ if (strlen($_SESSION['login']) == 0) {
 
         <body>
 
-            <?php include('includes/colorswitcher.php'); ?>
+            <!-- ?php include('includes/colorswitcher.php'); ? -->
             <?php include('includes/header.php'); ?>
 
             <section class="page-header profile_page">
@@ -112,7 +112,7 @@ if (strlen($_SESSION['login']) == 0) {
                                                 <div class="my_vehicles_list">
                                                     <ul class="vehicle_listing">
                                                         <?php
-                                                        $sql = "SELECT tblvehicles.*, tblbrands.BrandName, tblbooking.*, DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totaldays 
+                                                        $sql = "SELECT tblvehicles.*, tblbrands.BrandName, tblbooking.*, (DATEDIFF(tblbooking.ToDate, tblbooking.FromDate) + 1) as totaldays 
                                                         FROM tblbooking 
                                                         JOIN tblvehicles ON tblbooking.VehicleId=tblvehicles.id 
                                                         JOIN tblbrands ON tblbrands.id=tblvehicles.VehiclesBrand 
@@ -187,7 +187,7 @@ if (strlen($_SESSION['login']) == 0) {
 
                                                                 <?php
                                                                 // Recarrega os dados da reserva após os updates
-                                                                $sql_refresh = "SELECT tblvehicles.*, tblbrands.BrandName, tblbooking.*, DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totaldays 
+                                                                $sql_refresh = "SELECT tblvehicles.*, tblbrands.BrandName, tblbooking.*, (DATEDIFF(tblbooking.ToDate,tblbooking.FromDate)+1) as totaldays 
                                                                 FROM tblbooking 
                                                                 JOIN tblvehicles ON tblbooking.VehicleId=tblvehicles.id 
                                                                 JOIN tblbrands ON tblbrands.id=tblvehicles.VehiclesBrand 
@@ -200,8 +200,8 @@ if (strlen($_SESSION['login']) == 0) {
 
                                                                 <table class="table table-bordered">
                                                                     <tr>
-                                                                        <th>Nome do Carro</th>
-                                                                        <th>A Partir de</th>
+                                                                        <th>Carro</th>
+                                                                        <th>De</th>
                                                                         <th>Até</th>
                                                                         <th>Dias Total</th>
                                                                         <th>Aluguel</th>

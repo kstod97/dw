@@ -15,7 +15,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Car Rental Portal | Confirmed Bookings</title>
+	<title>DriveGo</title>
 
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -55,23 +55,23 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 				<div class="row">
 					<div class="col-md-12">
-						<h2 class="page-title">Confirmed Bookings</h2>
+						<h2 class="page-title">Reservas confirmadas</h2>
 						<div class="panel panel-default">
-							<div class="panel-heading">Bookings Info</div>
+							<div class="panel-heading">Bookings In</div>
 							<div class="panel-body">
 								<table id="zctb" class="display table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Name</th>
-											<th>Booking No.</th>
-											<th>Vehicle</th>
-											<th>From Date</th>
-											<th>To Date</th>
-											<th>Insurance</th>
+											<th>Nome</th>
+											<th>Reserva nº</th>
+											<th>Veiculo</th>
+											<th>A partir da data</th>
+											<th>A data</th>
+											<th>Seguro</th>
 											<th>Status</th>
-											<th>Posting date</th>
-											<th>Action</th>
+											<th>Data de publicação</th>
+											<th>Ação</th>
 										</tr>
 									</thead>
 

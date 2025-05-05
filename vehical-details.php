@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
 
 <head>
 
-  <title>Driveway</title>
+  <title>DriveGo</title>
   <!--Bootstrap -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
   <!--Custome Style -->
@@ -103,24 +103,24 @@ if (isset($_POST['submit'])) {
 
   <!-- SWITCHER -->
   <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
-  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
+  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all"  />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
-  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
+  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" data-default-color="true"/>
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
+  <link rel="shortcut icon" href="assets/images/icon7.png">
+
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 </head>
 
 <body>
 
   <!-- Start Switcher -->
-  <?php include('includes/colorswitcher.php'); ?>
+   <!-- ?php include('includes/colorswitcher.php'); ? --> 
   <!-- /Switcher -->
 
   <!--Header-->
@@ -152,8 +152,8 @@ if (isset($_POST['submit'])) {
           <?php
           if ($result->Vimage5 != "") {
           ?>
-        if ($result->Vimage5 != "") {
-        ?>
+        <!-- if ($result->Vimage5 != "") { -->
+        
           <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
         <?php } ?>
       </section>
@@ -168,7 +168,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="col-md-3">
               <div class="price_info">
-                <p>$<?php echo htmlentities($result->PricePerDay); ?></p>Diária
+                <p>R$<?php echo htmlentities($result->PricePerDay); ?></p>Diária
               </div>
             </div>
           </div>
@@ -198,7 +198,7 @@ if (isset($_POST['submit'])) {
                       <a href="#vehicle-overview" aria-controls="vehicle-overview" role="tab" data-toggle="tab">Sobre</a>
                     </li>
                     <li role="presentation">
-                      <a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessórios</a>
+                      <a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Acessórios</a>
                     </li>
                   </ul>
 
@@ -214,7 +214,7 @@ if (isset($_POST['submit'])) {
                       <table>
                         <thead>
                           <tr>
-                            <th colspan="2">Accessórios</th>
+                            <th colspan="2">Acessórios</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -374,7 +374,7 @@ if (isset($_POST['submit'])) {
                     <h5>Adicione o Seguro</h5>
                     <div class="checkbox">                 
                     <input type="radio" id="checkbox" name="seguro" value="0" onclick="abrirCheckout();">
-                        Quero adicionar seguro completo por <strong>R$150 (taxa única)</strong>                      
+                        Quero adicionar seguro completo por <strong>R$150 (taxa p/ diária)</strong>                      
                      
                       <a href="#" onclick="abrirTermosSeguro(); return false;" style="margin-left:10px;">Termos</a>
 
@@ -582,10 +582,10 @@ if (isset($_POST['submit'])) {
                             <?php echo htmlentities($result->BrandName); ?> , <?php echo htmlentities($result->VehiclesTitle); ?>
                           </a>
                         </h5>
-                        <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?></p>
+                        <p class="list-price">R$<?php echo htmlentities($result->PricePerDay); ?></p>
                         <ul class="features_list">
-                          <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?> seats</li>
-                          <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model</li>
+                          <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?> Lugares</li>
+                          <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> Ano</li>
                           <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
                         </ul>
                       </div>

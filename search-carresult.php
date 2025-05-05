@@ -8,7 +8,7 @@ error_reporting(0);
 <html lang="en">
 <head>
 
-<title>Car Rental Portal | Car Listing</title>
+<title>DriveGo</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <!--Custome Style -->
@@ -37,7 +37,7 @@ error_reporting(0);
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
+<link rel="shortcut icon" href="assets/images/icon7.png">
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 </head>
 <body>
@@ -155,7 +155,7 @@ if($query->rowCount() > 0)
                 <?php echo htmlentities($result->BrandName); ?> , <?php echo htmlentities($result->VehiclesTitle); ?>
               </a>
             </h5>
-            <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
+            <p class="list-price">R$<?php echo htmlentities($result->PricePerDay); ?> Diário</p>
             <ul>
               <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?> seats</li>
               <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model</li>
@@ -174,56 +174,37 @@ if($query->rowCount() > 0)
 ?>
       </div>
       
-      <!--Side-Bar-->
-      <aside class="col-md-3 col-md-pull-9">
-        <div class="sidebar_widget">
-          <div class="widget_heading">
-            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your Car </h5>
+      </div>
+
+                <div class="form-group select">
+                  <select class="form-control" name="fueltype">
+                    <option value="">Selecione Combustivel</option>
+                    <option value="Gasolina" <?= ($selectedFuel == 'Gasolina') ? 'selected' : '' ?>>Gasolina</option>
+                    <option value="Diesel" <?= ($selectedFuel == 'Diesel') ? 'selected' : '' ?>>Diesel</option>
+                    <!--option value="CNG" <?= ($selectedFuel == 'CNG') ? 'selected' : '' ?>>CNG</option -->
+                    <option value="Alcool" <?= ($selectedFuel == 'Alcool') ? 'selected' : '' ?>>Álcool</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <input type="number" name="year" class="form-control" placeholder="Selecione o Ano" min="1900" max="2099"
+                    value="<?= htmlentities($selectedYear); ?>">
+                </div>
+
+                <div class="form-group">
+                  <input type="number" name="price" class="form-control" placeholder="Preço Máximo" min="0"
+                    value="<?= htmlentities($selectedPrice); ?>">
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-block">
+                    <i class="fa fa-search" aria-hidden="true"></i> Procurar
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-          <div class="sidebar_filter">
-            <!-- Formulário alterado para método POST -->
-            <form action="#" method="post">
-              <div class="form-group select">
-                <select class="form-control" name="brand">
-                  <option value="">Select Brand</option>
-                  <?php 
-                  $sql = "SELECT * FROM tblbrands";
-                  $query = $dbh->prepare($sql);
-                  $query->execute();
-                  $brands = $query->fetchAll(PDO::FETCH_OBJ);
-                  if($query->rowCount() > 0)
-                  {
-                    foreach($brands as $result)
-                    { ?>  
-                      <option value="<?php echo htmlentities($result->id); ?>">
-                        <?php echo htmlentities($result->BrandName); ?>
-                      </option>
-                  <?php }
-                  } ?>
-                </select>
-              </div>
-              <div class="form-group select">
-                <select class="form-control" name="fueltype">
-                  <option value="">Select Fuel Type</option>
-                  <option value="Petrol">Petrol</option>
-                  <option value="Diesel">Diesel</option>
-                  <option value="CNG">CNG</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <input type="number" name="year" class="form-control" placeholder="Select Year" min="1900" max="2099">
-              </div>
-              <div class="form-group">
-                <input type="number" name="price" class="form-control" placeholder="Max Price" min="0">
-              </div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-block">
-                  <i class="fa fa-search" aria-hidden="true"></i> Search Car
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+
 
         <div class="sidebar_widget">
           <div class="widget_heading">
@@ -253,7 +234,7 @@ if($query->rowCount() > 0)
                       <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>">
                         <?php echo htmlentities($result->BrandName); ?> , <?php echo htmlentities($result->VehiclesTitle); ?>
                       </a>
-                      <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
+                      <p class="widget_price">R$<?php echo htmlentities($result->PricePerDay); ?> Diário</p>
                     </div>
                   </li>
               <?php 

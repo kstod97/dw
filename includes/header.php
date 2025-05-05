@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3 col-md-2">
-          <div class="logo"> <a href="index.php"><img src="assets/images/logo.png" alt="image" /></a> </div>
+          <div class="logo"> <a href="index.php"><img src="assets/images/logo6.png" alt="image" /></a> </div>
         </div>
         <div class="col-sm-9 col-md-10">
           <div class="header_info">
@@ -114,7 +114,7 @@
 
           <li><a href="page.php?type=aboutus">Sobre nós</a></li>
           <li><a href="car-listing.php">Lista de Carros</a>
-          <li><a href="page.php?type=faqs">FAQs</a></li>
+          <!-- <li><a href="page.php?type=faqs">FAQs</a></li> -->
           <li><a href="contact-us.php">Fale Conosco</a></li>
 
         </ul>

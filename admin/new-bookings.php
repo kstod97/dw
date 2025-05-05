@@ -19,7 +19,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 
-	<title>Car Rental Portal | New Bookings</title>
+	<title>DriveGo</title>
 
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">

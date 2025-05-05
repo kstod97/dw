@@ -27,7 +27,7 @@ if (isset($_POST['send'])) {
 
 <head>
 
-  <title>Driveway</title>
+  <title>DriveGo</title>
   <!--Bootstrap -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
   <!--Custome Style -->
@@ -56,7 +56,7 @@ if (isset($_POST['send'])) {
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
   <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
+  <link rel="shortcut icon" href="assets/images/icon7.png">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
   <style>
     .errorWrap {
@@ -141,8 +141,8 @@ if (isset($_POST['send'])) {
           <div class="col-md-6">
             <h3>Informações de Contato</h3>
             <div class="contact_detail" style="color: rgb(51, 51, 51); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px;">
-              <p><strong>Telefone:</strong> (89) 7456-1236</p>
-              <p><strong>Email:</strong> <a href="mailto:info@gmail.com">info@gmail.com</a></p>
+              <p><strong>Telefone:</strong> (13) 34567890</p>
+              <p><strong>Email:</strong> <a href="mailto:info@gmail.com">contato@drivego.com</a></p>
             </div>
           </div>
 

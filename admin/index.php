@@ -34,7 +34,7 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Car Rental Portal | Admin Login</title>
+	<title>DriveGo</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
@@ -52,15 +52,15 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold mt-4x" style="color:#fff">Admin | Sign in</h1>
+						<h1 class="text-center text-bold mt-4x" style="color:#fff">Administrador | Entrar</h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
 								<form method="post">
 
-									<label for="" class="text-uppercase text-sm">Your Username </label>
+									<label for="" class="text-uppercase text-sm">seu Usuario</label>
 									<input type="text" placeholder="Username" name="username" class="form-control mb">
 
-									<label for="" class="text-uppercase text-sm">Password</label>
+									<label for="" class="text-uppercase text-sm">Senha</label>
 									<input type="password" placeholder="Password" name="password" class="form-control mb">
 		
 
@@ -68,7 +68,7 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 
 								</form>
 
-			<p style="margin-top: 4%" align="center"><a href="../index.php">Back to Home</a>	</p>
+			<p style="margin-top: 4%" align="center"><a href="../index.php">Voltar para a página inicial</a>	</p>
 							</div>
 
 						</div>

@@ -9,7 +9,7 @@ error_reporting(0);
 
 <head>
 
-  <title>Car Rental Portal | Car Listing</title>
+  <title>DriveGo</title>
   <!--Bootstrap -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
   <!--Custome Style -->
@@ -38,7 +38,7 @@ error_reporting(0);
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
   <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
+  <link rel="shortcut icon" href="assets/images/icon7.png">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 </head>
 
@@ -163,7 +163,7 @@ where tblvehicles.VehiclesTitle=:search || tblvehicles.FuelType=:search || tblbr
                     <option value="">Selecione Combustivel</option>
                     <option value="Petrol" <?= ($selectedFuel == 'Petrol') ? 'selected' : '' ?>>Gasolina</option>
                     <option value="Diesel" <?= ($selectedFuel == 'Diesel') ? 'selected' : '' ?>>Diesel</option>
-                    <option value="CNG" <?= ($selectedFuel == 'CNG') ? 'selected' : '' ?>>CNG</option>
+                    <option value="CNG" <?= ($selectedFuel == 'CNG') ? 'selected' : '' ?>>Álcool</option>
                   </select>
                 </div>
 

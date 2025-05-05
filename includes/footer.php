@@ -49,7 +49,7 @@ echo "<script>alert('Algo deu errado, Tente Novamente mais tarde.');</script>";
         </div>
   
         <div class="col-md-3 col-sm-6">
-          <h6>Assinar Newsletter </h6>
+          <h6>Assinar </h6>
           <div class="newsletter-form">
             <form method="post">
               <div class="form-group">
@@ -78,7 +78,7 @@ echo "<script>alert('Algo deu errado, Tente Novamente mais tarde.');</script>";
           </div>
         </div>
         <div class="col-md-6 col-md-pull-6">
-          <p class="copy-right">Copyright &copy; 2025 Portal Driveway. Todos os Direitos Reservados</p>
+          <p class="copy-right">Copyright &copy; 2025 Portal DriveGo. Todos os Direitos Reservados</p>
         </div>
       </div>
     </div>

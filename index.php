@@ -9,7 +9,7 @@ error_reporting(0);
 <html lang="en">
 <head>
 
-<title>Driveway</title>
+<title>DriveGo</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
@@ -29,13 +29,13 @@ error_reporting(0);
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
+<link rel="shortcut icon" href="assets/images/icon7.png">
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet"> 
 </head>
 <body>
 
 <!-- Start Switcher -->
-<?php include('includes/colorswitcher.php');?>
+<!-- ?php include('includes/colorswitcher.php');? -->
 <!-- /Switcher -->  
         
 <!--Header-->
@@ -92,8 +92,11 @@ foreach($results as $result)
 
 <div class="col-list-3">
 <div class="recent-car-list">
-<div class="car-info-box"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1);?>" class="img-responsive" alt="image"></a>
-<ul>
+<div class="car-info-box"> 
+  <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>">
+    <img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1);?>" class="img-responsive" alt="image" style="width:356.09px; height:200.3px; object-fit:cover; display:block;">
+  </a>
+  <ul>
 <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType);?></li>
 <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear);?> Modelo</li>
 <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity);?> Assentos</li>
@@ -101,10 +104,10 @@ foreach($results as $result)
 </div>
 <div class="car-title-m">
 <h6><a href="vehical-details.php?vhid=<?php echo htmlentities($result->id);?>"> <?php echo htmlentities($result->VehiclesTitle);?></a></h6>
-<span class="price">$<?php echo htmlentities($result->PricePerDay);?> Diário</span> 
+<span class="price">R$<?php echo htmlentities($result->PricePerDay);?> Diário</span> 
 </div>
 <div class="inventory_info_m">
-<p><?php echo substr($result->VehiclesOverview,0,70);?></p>
+
 </div>
 </div>
 </div>
@@ -116,28 +119,31 @@ foreach($results as $result)
 </section>
 <!-- /Resent Cat --> 
 
-<!-- Fun Facts-->
-<section class="fun-facts-section">
+<!-- Fun Facts -->
+<!-- <section class="fun-facts-section">
+<div class="dark-overlay"></div >
   <div class="container div_zindex">
-    <div class="row">
-    
-      <div class="col-lg-3 col-xs-6 col-sm-3">
+    <div class="row justify-content-center text-center">
+
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
         <div class="fun-facts-m">
           <div class="cell">
             <h2><i class="fa fa-car" aria-hidden="true"></i>1200+</h2>
-            <p>Novos Carros Disponiveis!</p>
+            <p>Novos Carros Disponíveis!</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-xs-6 col-sm-3">
+
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
         <div class="fun-facts-m">
-          <div class="cell">
-            <h2><i class="fa fa-car" aria-hidden="true"></i>1000+</h2>
-            <p>Carros Alugados</p>
+          <div class="cell text-center">
+        <h2><i class="fa fa-car" aria-hidden="true"></i>1000+</h2>
+        <p>Carros Alugados</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-xs-6 col-sm-3">
+
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
         <div class="fun-facts-m">
           <div class="cell">
             <h2><i class="fa fa-user-circle-o" aria-hidden="true"></i>600+</h2>
@@ -145,12 +151,14 @@ foreach($results as $result)
           </div>
         </div>
       </div>
+
     </div>
   </div>
-  <!-- Dark Overlay-->
-  <div class="dark-overlay"></div>
-</section>
-<!-- /Fun Facts--> 
+</section> -->
+<!-- /Fun Facts -->
+
+<!-- Dark Overlay -->
+<!-- passei pro fun facts section -->
 
 
 <!--Testimonial -->

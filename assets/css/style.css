@@ -946,7 +946,7 @@ nav.navbar {
   margin: 0 auto;
 }
 .navbar-default .navbar-nav > li {
-  margin: 0 5px 0 0;
+  margin: 0 50px 0 0;
   padding: 0px;
   border-radius:0px;
   transition-duration:0.3s;
@@ -1064,22 +1064,24 @@ nav.navbar {
 	3.1. Banner
 -------------------------------*/
 .banner-section {
-  background-image: url("../images/banner-image.jpg");
+  background-image: url(../images/banner25.jpeg);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: cover;
-  padding: 160px 0;
+  background-size: cover; /* Em vez de cover */
+  padding: 10px 0;
   position: relative;
 }
 .banner-section::after {
-  background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+ 
   bottom: 0;
   content: "";
-  height: 7px;
+  height: 50vh;
   left: 0;
-  position: absolute;
+  position: relative;
   right: 0;
   width: 100%;
+  display:flex;
+  align-items: center;
 }
 .banner_content {
   padding-left: 120px;
@@ -4655,7 +4657,7 @@ h3 {
 	display:none;
 }
 .col-list-3 {
-	width:100%;
+	width: 100%;
 }
 .car-info-box img, .featured-car-img img {
 	width:100%;

@@ -45,7 +45,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<meta name="author" content="">
 		<meta name="theme-color" content="#3e454c">
 
-		<title>Car Rental Portal | New Bookings </title>
+		<title>DriveGo</title>
 
 		<!-- Font awesome -->
 		<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -96,11 +96,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 					<div class="row">
 						<div class="col-md-12">
 
-							<h2 class="page-title">Booking Details</h2>
+							<h2 class="page-title">Detalhes da Reserva</h2>
 
 							<!-- Zero Configuration Table -->
 							<div class="panel panel-default">
-								<div class="panel-heading">Bookings Info</div>
+								<div class="panel-heading">Informações de Reservas</div>
 								<div class="panel-body">
 
 
@@ -132,62 +132,62 @@ if (strlen($_SESSION['alogin']) == 0) {
 															<th colspan="4" style="text-align:center;color:blue">User Details</th>
 														</tr>
 														<tr>
-															<th>Booking No.</th>
+															<th>Sem reservas.</th>
 															<td>#<?php echo htmlentities($result->BookingNumber); ?></td>
-															<th>Name</th>
+															<th>Nome</th>
 															<td><?php echo htmlentities($result->FullName); ?></td>
 														</tr>
 														<tr>
-															<th>Email Id</th>
+															<th>Email </th>
 															<td><?php echo htmlentities($result->EmailId); ?></td>
-															<th>Contact No</th>
+															<th>sem contato</th>
 															<td><?php echo htmlentities($result->ContactNo); ?></td>
 														</tr>
 														<tr>
-															<th>Address</th>
+															<th>Endereço</th>
 															<td><?php echo htmlentities($result->Address); ?></td>
-															<th>City</th>
+															<th>Cidade</th>
 															<td><?php echo htmlentities($result->City); ?></td>
 														</tr>
 														<tr>
-															<th>Country</th>
+															<th>País</th>
 															<td colspan="3"><?php echo htmlentities($result->Country); ?></td>
 														</tr>
 
 														<tr>
-															<th colspan="4" style="text-align:center;color:blue">Booking Details</th>
+															<th colspan="4" style="text-align:center;color:blue">Detalhes da Reserva</th>
 														</tr>
 														<tr>
-															<th>Vehicle Name</th>
+															<th>Nome do Veículo</th>
 															<td><a href="edit-vehicle.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->BrandName); ?>, <?php echo htmlentities($result->VehiclesTitle); ?></a></td>
-															<th>Booking Date</th>
+															<th>Data Reserva</th>
 															<td><?php echo htmlentities($result->PostingDate); ?></td>
 														</tr>
 														<tr>
-															<th>From Date</th>
+															<th>Da Data</th>
 															<td><?php echo htmlentities($result->FromDate); ?></td>
 															<th>To Date</th>
 															<td><?php echo htmlentities($result->ToDate); ?></td>
 														</tr>
 														<tr>
-															<th>Total Days</th>
+															<th>Dias Totais</th>
 															<td><?php echo htmlentities($totaldias); ?></td>
-															<th>Rent Per Day</th>
+															<th>Aluguel Por Dia</th>
 															<td><?php echo htmlentities($valordiaria); ?></td>
 														</tr>
 														<tr>
-															<th>Insurance Status</th>
+															<th>Status do Seguro</th>
 															<td colspan="3">
 																<?php echo ($seguro > 0) ? "<span style='color:green'>Ativado (R$150)</span>" : "<span style='color:red'>Não ativado</span>"; ?>
 															</td>
 														</tr>
 														<tr>
-															<th colspan="3" style="text-align:center">Grand Total</th>
+															<th colspan="3" style="text-align:center">Total Grande</th>
 															<td>R$ <?php echo htmlentities(number_format($totalfinal, 2, ',', '.')); ?></td>
 														</tr>
 
 														<tr>
-															<th>Booking Status</th>
+															<th>Status da Reserva</th>
 															<td><?php
 																if ($result->Status == 0) {
 																	echo htmlentities('Not Confirmed yet');
@@ -198,7 +198,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 																}
 																?>
 															</td>
-															<th>Last Updation Date</th>
+															<th>Última Data de Atualização</th>
 															<td><?php echo htmlentities($result->LastUpdationDate); ?></td>
 														</tr>
 
@@ -214,7 +214,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 														<tr>
 															<td style="text-align:center" colspan="4">
-																<button onclick="window.print();" class="btn btn-success">Print</button>
+																<button onclick="window.print();" class="btn btn-success">Imprimir</button>
 															</td>
 														</tr>
 
@@ -223,7 +223,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 													}
 												} else { ?>
 													<tr>
-														<td colspan="4" style="text-align:center;color:red">No Booking Found</td>
+														<td colspan="4" style="text-align:center;color:red">Nenhuma Reserva Encontrada</td>
 													</tr>
 												<?php } ?>
 											</tbody>
