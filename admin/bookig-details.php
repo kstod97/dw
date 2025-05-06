@@ -119,7 +119,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 												if ($query->rowCount() > 0) {
 													foreach ($results as $result) {
-														$totaldias = $result->totalnodays;
+														$totaldias = $result->totalnodays + 1;
 														$valordiaria = $result->PricePerDay;
 														$subtotal = $totaldias * $valordiaria;
 
