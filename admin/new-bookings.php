@@ -78,7 +78,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<td><?php echo htmlentities($result->PostingDate); ?></td>
 														<td>
 															<a href="bookig-details.php?bid=<?php echo htmlentities($result->id); ?>">View</a><br>
-															<a href="/dw3/gerar-boleto.php?booking_id=<?php echo htmlentities($result->id); ?>" class="btn btn-xs btn-primary" target="_blank">Gerar Boleto</a>
+															<a href="/gerar-boleto.php?booking_id=<?php echo htmlentities($result->id); ?>" class="btn btn-xs btn-primary" target="_blank">Gerar Boleto</a>
 
 														</td>
 

@@ -21,7 +21,7 @@ if (!$bookingId) {
 }
 
 // 3) Busca dados da reserva e do cliente
-$stmt = $pdo->prepare("
+$stmt = $dbh->prepare("
     SELECT b.*, u.FullName, u.EmailId, u.Address, u.City, u.Country
     FROM tblbooking AS b
     INNER JOIN tblusers AS u ON u.EmailId = b.userEmail
@@ -40,6 +40,28 @@ $nossoNumero = str_pad($bookingId, 8, '0', STR_PAD_LEFT);
 $dataVenc = date('d/m/Y', strtotime('+3 days'));
 
 $dadosboleto = [
+    // valores não encontrados
+    "conta_cedente"         => "1234567",
+    "conta_cedente_dv"         => "1",
+    "agencia_dv"         => "5",
+    "identificacao"         => "identificacao",
+    "cpf_cnpj"         => "12345678995",
+    "endereco"         => "rua teste",
+    "cidade_uf"         => "guarujá",
+    "cedente"         => "123123",
+    "especie"         => "espécie",
+    "quantidade"         => "1",
+    "demonstrativo1"         => "d1",
+    "demonstrativo2"         => "d2",
+    "demonstrativo3"         => "d3",
+    "especie_doc"         => "especie_doc",
+    "aceite"         => "aceite",
+    "valor_unitario"         => "20,00",
+    "instrucoes1"         => "instruções1",
+    "instrucoes2"         => "instruções2",
+    "instrucoes3"         => "instruções3",
+    "instrucoes4"         => "instruções4",
+
     // Dados fixos do cedente
     "agencia"         => "1234",
     "conta"           => "567890",
@@ -72,14 +94,14 @@ $dadosboleto = [
 require_once __DIR__ . '/boleto/funcoes_bradesco.php';
 require_once __DIR__ . '/boleto/layout_bradesco.php';
 
-$linha_digitavel = function_exists('monta_linha_digitavel') ? monta_linha_digitavel($dadosboleto) : '';
+$linha_digitavel = function_exists('monta_linha_digitavel') ? monta_linha_digitavel($dadosboleto["codigo_barras"]) : '';
 
 ob_start();
 require_once __DIR__ . '/boleto/boleto_bradesco.php';
 $html = ob_get_clean();
 
 // 6) Salva dados no banco
-$stmt = $pdo->prepare("
+$stmt = $dbh->prepare("
     INSERT INTO tblboleto (booking_id, nosso_numero, linha_digitavel, vencimento, valor, url_boleto, status)
     VALUES (:bid, :nn, :ld, :vcto, :val, :url, 1)
 ");
@@ -91,17 +113,17 @@ $stmt->execute([
     ':val'  => $booking['TotalPrice'],
     ':url'  => null
 ]);
-$boletoId = $pdo->lastInsertId();
+$boletoId = $dbh->lastInsertId();
 
 // 7) Salva HTML em arquivo e atualiza URL no banco
 $boletoFile = __DIR__ . "/boleto/boleto_$boletoId.html";
 $url        = "/dw3/boleto/boleto_$boletoId.html";
 file_put_contents($boletoFile, $html);
 
-$pdo->prepare("UPDATE tblboleto SET url_boleto = :url WHERE id = :id")
+$dbh->prepare("UPDATE tblboleto SET url_boleto = :url WHERE id = :id")
     ->execute([':url' => $url, ':id' => $boletoId]);
 
 // 8) Redireciona para o boleto
-header("Location: $url");
+//header("Location: $url");
 exit;
 }
